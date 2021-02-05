@@ -4,21 +4,16 @@ module.exports = {
   entry: "./src/index.ts",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
   },
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
+      { test: /\.tsx?$/, loader: "ts-loader" },
     ],
   },
+  resolve: { extensions: [".ts", ".js", ".json"] },
 };
